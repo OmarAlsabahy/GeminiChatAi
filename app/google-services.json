@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "681598708226",
+    "project_id": "geminichatai-21a02",
+    "storage_bucket": "geminichatai-21a02.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681598708226:android:8557553687720f6921551b",
+        "android_client_info": {
+          "package_name": "com.example.geminichatai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjhAhSlG3TBkQvGmd88oZE30QPyCjKvwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

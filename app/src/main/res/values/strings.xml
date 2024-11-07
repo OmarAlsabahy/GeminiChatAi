@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">GeminiChatAi</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="welcome_back_you_ve_n_been_missed">Welcome back you\'ve\n been missed</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="create_new_account"><u>Create new account</u></string>
+    <string name="register">Register</string>
+    <string name="confrim_password">Confrim Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+</resources>
