@@ -11,4 +11,6 @@
     <string name="confrim_password">Confrim Password</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
+    <string name="chat">Chat</string>
+    <string name="enter_message">Enter message</string>
 </resources>

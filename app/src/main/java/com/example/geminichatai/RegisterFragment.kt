@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.geminichatai.ViewModels.RegisterViewModel
 import com.example.geminichatai.databinding.FragmentRegisterBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,7 +49,7 @@ class RegisterFragment : Fragment() {
             viewModel.register(email , password)
             viewModel.status.observe(viewLifecycleOwner){
                 if (it){
-                    Toast.makeText(requireContext() , "Register Successfully" , Toast.LENGTH_LONG).show()
+                    findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToChatFragment())
                 }else{
                     Toast.makeText(requireContext() , "Register Failed" , Toast.LENGTH_LONG).show()
                 }

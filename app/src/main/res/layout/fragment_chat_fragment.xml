@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ChatFragment">
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08"
+        android:id="@+id/guideLine1"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_arrow_back_ios_new_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txt_chat"
+        app:layout_constraintBottom_toBottomOf="@id/txt_chat"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:id="@+id/btnBack"/>
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/chat"
+        android:textSize="@dimen/_30sdp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/btnBack"
+        app:layout_constraintTop_toBottomOf="@id/guideLine1"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:id="@+id/txt_chat"/>
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnSend"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/chatbarshape"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:inputType="text"
+        android:hint="@string/enter_message"
+        android:paddingStart="@dimen/_10sdp"
+        android:id="@+id/chatBar"/>
 
-</FrameLayout>
+    <ImageView
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:src="@drawable/baseline_send_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/chatBar"
+        app:layout_constraintBottom_toBottomOf="@id/chatBar"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:id="@+id/btnSend"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_chat"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintBottom_toTopOf="@id/chatBar"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:id="@+id/recyclerView"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
