@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.OnBackPressedDispatcher
 import androidx.fragment.app.viewModels
+import com.example.geminichatai.Adapters.ChatAdapter
 import com.example.geminichatai.Models.MessageModel
 import com.example.geminichatai.ViewModels.ChatViewModel
 import com.example.geminichatai.databinding.FragmentChatFragmentBinding
@@ -18,6 +19,7 @@ class ChatFragment : Fragment() {
     lateinit var binding: FragmentChatFragmentBinding
     val dispatcher = OnBackPressedDispatcher()
     val viewModel : ChatViewModel by viewModels()
+    lateinit var adapter: ChatAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,9 +39,22 @@ class ChatFragment : Fragment() {
         }
         dispatcher.addCallback(onBackPressed)
 
+
+        viewModel.getAllMessages()
+        viewModel.messages.observe(viewLifecycleOwner){
+            adapter = ChatAdapter(it)
+            adapter.notifyDataSetChanged()
+            binding.recyclerView.adapter = adapter
+        }
+
         binding.btnSend.setOnClickListener {
             validateData()
+            clearBar()
         }
+    }
+
+    private fun clearBar() {
+        binding.chatBar.text.clear()
     }
 
     private fun validateData() {

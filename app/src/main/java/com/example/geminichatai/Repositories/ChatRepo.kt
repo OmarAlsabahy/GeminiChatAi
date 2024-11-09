@@ -3,7 +3,10 @@ package com.example.geminichatai.Repositories
 import com.example.geminichatai.Models.MessageModel
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import javax.inject.Inject
 
 class ChatRepo @Inject constructor(private val database: FirebaseDatabase , private val auth: FirebaseAuth) {
@@ -32,5 +35,30 @@ class ChatRepo @Inject constructor(private val database: FirebaseDatabase , priv
        )
         reference.child("messages").child(auth.currentUser!!.uid).push().setValue(message)
        reference.child("messages").child(auth.currentUser!!.uid).push().setValue(responseModel)
+    }
+
+
+    fun getAllMessages(callBack : (List<MessageModel>)->Unit){
+        val readReference = reference.child("messages").child(auth.currentUser!!.uid)
+        val messages = mutableListOf<MessageModel>()
+        readReference.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                messages.clear()
+                for(messageSnapshot in snapshot.children){
+
+                    val message = messageSnapshot.getValue(MessageModel::class.java)
+                    messages.add(message!!)
+                }
+
+                callBack.invoke(messages)
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+
     }
 }
