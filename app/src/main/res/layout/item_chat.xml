@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/linearLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -17,7 +18,8 @@
             android:text="@string/message"
             android:textColor="@color/white"
             android:padding="@dimen/_10sdp"
-            android:id="@+id/message"/>
+            android:id="@+id/message"
+            />
     </androidx.cardview.widget.CardView>
 
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.OnBackPressedDispatcher
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geminichatai.Adapters.ChatAdapter
 import com.example.geminichatai.Models.MessageModel
 import com.example.geminichatai.ViewModels.ChatViewModel
@@ -42,6 +43,10 @@ class ChatFragment : Fragment() {
 
         viewModel.getAllMessages()
         viewModel.messages.observe(viewLifecycleOwner){
+            binding.recyclerView.layoutManager = LinearLayoutManager(requireContext()).apply {
+                stackFromEnd = true
+
+            }
             adapter = ChatAdapter(it)
             adapter.notifyDataSetChanged()
             binding.recyclerView.adapter = adapter

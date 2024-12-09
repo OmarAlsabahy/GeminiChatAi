@@ -24,14 +24,14 @@ class ChatRepo @Inject constructor(private val database: FirebaseDatabase , priv
        val message = MessageModel(
            message = prompt,
            userId = auth.currentUser!!.uid,
-           isFromUser = true
+           fromUser = true
        )
 
 
        val responseModel = MessageModel(
            message = response.text.toString(),
            userId = auth.currentUser!!.uid,
-           isFromUser = false
+           fromUser = false
        )
         reference.child("messages").child(auth.currentUser!!.uid).push().setValue(message)
        reference.child("messages").child(auth.currentUser!!.uid).push().setValue(responseModel)
